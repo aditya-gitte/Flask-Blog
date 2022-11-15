@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="content-section">
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}   <!--add the csrf token using the secret key-->
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Write a Blog</legend>
+
+            <div class="form-grpup">
+                {{ form.title.label(class="form-label") }}
+
+                {% if form.title.errors %}
+                    {{ form.title(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.title.errors %}
+                            <span>
+                                {{ error }}
+                            </span>
+                        {% endfor%}
+                    </div>
+                {% else %}
+
+                {{ form.title(class="form-control ") }}
+                {% endif %}
+            </div>
+            <div class="form-grpup">
+                {{ form.blog_des.label(class="form-label") }}
+
+                {% if form.blog_des.errors %}
+                    {{ form.blog_des(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.blog_des.errors %}
+                            <span>
+                                {{ error }}
+                            </span>
+                        {% endfor%}
+                    </div>
+                {% else %}
+
+                {{ form.blog_des(class="form-control ") }}
+                {% endif %}
+            </div>
+
+
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info")}}
+        </div>
+
+    </form>
+</div>
+
+
+
+{% endblock content %}
